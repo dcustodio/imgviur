@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('imgviurApp', [
     'ngAnimate',
     'ngCookies',
@@ -33,3 +33,8 @@ angular
         redirectTo: '/'
       });
   });
+
+app.constant('mySettings', {
+  apiUri: 'https://api.imgur.com/3'
+
+});
