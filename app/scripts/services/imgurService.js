@@ -1,7 +1,7 @@
 /**
  * Created by David on 17/07/2015.
  */
-app.factory('imgurService', ['$http', '$q', 'mySettings', function ($http, $q, mySettings) {
+app.factory('imgurService', ['$http', '$q', 'mySettings','imgurConfig', function ($http, $q, mySettings,imgurConfig) {
 
   var httpGet = function (path) {
     var deferred = $q.defer();
@@ -47,7 +47,7 @@ app.factory('imgurService', ['$http', '$q', 'mySettings', function ($http, $q, m
     var deferred = $q.defer();
 
     var fd = new FormData();
-    fd.append('file', file);
+    fd.append('image', file);
 
 
     $http({
@@ -56,8 +56,10 @@ app.factory('imgurService', ['$http', '$q', 'mySettings', function ($http, $q, m
       data: fd,
       transformRequest: angular.identity,
       // headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'},
-      headers: {'Content-Type': undefined},
-      withCredentials: true
+      headers: {'Content-Type': undefined, 'Authorization' :
+        imgurConfig.client_id ,
+        'Accept': 'application/json'
+      }
     }).
 
       success(function (data, status, headers, config) {
@@ -120,6 +122,9 @@ app.factory('imgurService', ['$http', '$q', 'mySettings', function ($http, $q, m
 
     getImage: function (id) {
       return httpGet('/image/'+id);
+    },
+    uploadImage: function(file){
+      return httpPostFile('/image',file)
     }
 
   }

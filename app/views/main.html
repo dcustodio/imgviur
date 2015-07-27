@@ -13,7 +13,9 @@
   <div class="col-lg-4 col-lg-offset-4">
     <h4>choose a file:</h4>
     <fieldset>
-      <input type="file">
+      <input type="file" id="fileInput" name="fileInput" placeholder="" class="form-control"
+             onchange="angular.element(this).scope().fileNameChanged(this)">
+      <button class="btn btn-success" ng-click="uploadFile()"></button>
     </fieldset>
 
   </div>
