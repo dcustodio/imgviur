@@ -31,6 +31,7 @@ angular.module('imgviurApp')
     $scope.uploadFile = function(){
       imgurService.uploadImage(file).then(function (result) {
         $scope.image =  result.data.link;
+        $scope.deletehash = 'http://imgur.com/delete/'+result.data.deletehash;
 
         /**/
 
