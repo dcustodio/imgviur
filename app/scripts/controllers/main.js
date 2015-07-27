@@ -15,6 +15,7 @@ angular.module('imgviurApp')
       'Karma'
     ];
 
+    $scope.image = "/images/viur_logo_square.png";
 
     var file;
 
@@ -29,7 +30,9 @@ angular.module('imgviurApp')
 
     $scope.uploadFile = function(){
       imgurService.uploadImage(file).then(function (result) {
-        alert(result.data.id)
+        $scope.image =  result.data.link;
+
+        /**/
 
       }, function (error) {
         alert(error)

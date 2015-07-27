@@ -2,10 +2,9 @@
   <h1>'Sup?</h1>
   <p class="lead">
 
-    <br>
-    Upload and view images from imgur
+  <img ng-src="{{ image }}" >
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+
 </div>
 
 <div class="row marketing">
@@ -15,7 +14,7 @@
     <fieldset>
       <input type="file" id="fileInput" name="fileInput" placeholder="" class="form-control"
              onchange="angular.element(this).scope().fileNameChanged(this)">
-      <button class="btn btn-success" ng-click="uploadFile()"></button>
+      <button class="btn btn-success" ng-click="uploadFile()">Upload</button>
     </fieldset>
 
   </div>
